@@ -2,10 +2,19 @@ a:hover {
   text-decoration: none;
 }
 
+.site-header {
+  border-top: none;
+  padding-top: 10px;
+}
+
+#birdhouse img {
+  margin-top: 10px;
+}
+
 .grid {
   display: grid;
   grid-gap: 20px;
-  grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-auto-rows: 20px;
 }
 
@@ -17,29 +26,29 @@ a:hover {
   cursor: pointer;
 }
 
-.grid-item-image{
+.grid-item-image {
   width: 100%;
 }
 
 .title {
   padding: 20px;
-  }
+}
 
-.title h3{
+.title h3 {
   font-size: 1.2em;
   color: #ffffff;
   text-transform: uppercase;
 }
 
-.project .title{
-  background-color: #607D8B;
+.project .title {
+  background-color: #607d8b;
 }
 
-.blog .title{
+.blog .title {
   background-color: #ff9800;
 }
 
-.photo .title{
+.photo .title {
   background-color: #f44336;
 }
 
@@ -48,7 +57,7 @@ a:hover {
   background-color: #fff;
   padding: 10px;
   grid-gap: 10px;
-  grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-auto-rows: 20px;
 }
 
@@ -56,21 +65,21 @@ a:hover {
   margin: 10px;
   border-radius: 10px;
   overflow: hidden;
-  color:#555!important;
+  color: #555 !important;
   font-size: 14px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
-.grid-item-title{
+.grid-item-title {
   text-align: center;
   font-weight: 700;
   line-height: 1.8;
-  color:#555 !important;
+  color: #555 !important;
   text-decoration: none !important;
 }
 
-.grid-text{
+.grid-text {
   text-align: left;
   font-weight: 700;
   line-height: 1.4;
