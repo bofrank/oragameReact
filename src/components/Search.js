@@ -115,11 +115,16 @@ class Search extends React.Component {
   };
 
   render() {
+    var bgImage = require("../../images/cabinet-contemporary-counter-1080721.jpg");
     return (
       <div className="section-header">
         <div id="hero" className="section-home">
           <div id="hero-bg">
-            <div className="bg" alt="Photo by Mark McCammon from Pexels" />
+            <div
+              className="bg"
+              style={{ backgroundImage: "url(" + bgImage + ")" }}
+              alt="Photo by Mark McCammon from Pexels"
+            />
           </div>
           <div id="hero-gradient" />
           <div id="hero-search">
