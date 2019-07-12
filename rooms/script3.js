@@ -16,14 +16,12 @@ drone.on("open", error => {
   if (error) {
     return console.error(error);
   }
-  console.log("Successfully connected to Scaledrone");
 
   const room = drone.subscribe("observable-room");
   room.on("open", error => {
     if (error) {
       return console.error(error);
     }
-    console.log("Successfully joined room");
   });
 
   room.on("members", m => {

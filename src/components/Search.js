@@ -14,7 +14,7 @@ class Search extends React.Component {
   handleSubmit = event => {
     event.preventDefault();
     //this.props.actions.createCourse(this.state.course);
-    console.log(this.state.recipe.ingredient);
+    //console.log(this.state.recipe.ingredient);
     this.load();
   };
 
@@ -22,14 +22,7 @@ class Search extends React.Component {
     document.getElementById("grid").innerHTML = "";
     document.getElementById("loading").style.display = "block";
 
-    function checkComplete(imageCount, recipeCount) {
-      if (imageCount == recipeCount) {
-        this.resizeAllGridItems();
-      }
-    }
-
     var ingredient = document.getElementById("ingredient").value;
-    var appkey = "f3060af875eda52baf4d68b1fdbdbf43";
     var appid = "5fb37b30";
     var recipeUrl = `https://api.edamam.com/search?app_id=${appid}&app_key=f3060af875eda52baf4d68b1fdbdbf43&q=${ingredient}`;
 
@@ -38,8 +31,6 @@ class Search extends React.Component {
         return response.json();
       })
       .then(edamamJSON => {
-        let node;
-        let element;
         let recipeHTML;
         let ingredientsHTML = "";
 
@@ -82,7 +73,7 @@ class Search extends React.Component {
             " " + ingredient + " is not found in our recipe library :(";
         }
       })
-      .then(function(edamamJSON) {
+      .then(function() {
         document.getElementById("loading").style.display = "none";
       })
       .catch(function() {
