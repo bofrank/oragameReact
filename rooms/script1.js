@@ -226,7 +226,7 @@ function sendMessage() {
 }
 
 function createMemberElement(member) {
-  const { name = "empty1", color } = member.clientData;
+  const { name = "blue_cedar", color = "blue" } = member.clientData || {};
   const el = document.createElement("div");
   el.appendChild(document.createTextNode(name));
   el.className = "member";
