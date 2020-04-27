@@ -1,24 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 
-class Search extends React.Component {
+function Search() {
+
+  const [recipe, setRecipe] = useState({ ingredient: "" });
+
+  /*
+  useEffect(() => {
+    setRecipe("apple")
+  }, [])
+*/
+  /*
   state = {
     recipe: {
       ingredient: ""
     }
   };
-  handleChange = event => {
-    const recipe = { ...this.state.recipe, ingredient: event.target.value };
-    this.setState({ recipe });
-  };
+  */
 
-  handleSubmit = event => {
+  function handleChange(event) {
+    //const recipe = { ...this.state.recipe, ingredient: event.target.value };
+    //recipe.ingredient = event.target.value
+    recipe.ingredient = { ...recipe.ingredient, ingredient: event.target.value };
+    setRecipe({ recipe });
+  }
+
+  function handleSubmit(event) {
     event.preventDefault();
     //this.props.actions.createCourse(this.state.course);
     //console.log(this.state.recipe.ingredient);
-    this.load();
-  };
+    load();
+  }
 
-  load = () => {
+  function load() {
     document.getElementById("grid").innerHTML = "";
     document.getElementById("loading").style.display = "block";
 
@@ -73,72 +86,70 @@ class Search extends React.Component {
             " " + ingredient + " is not found in our recipe library :(";
         }
       })
-      .then(function() {
+      .then(function () {
         document.getElementById("loading").style.display = "none";
       })
-      .catch(function() {
+      .catch(function () {
         console.log("fetch failed");
       });
 
     return false;
-  };
-
-  resizeGridItem = item => {
-    var grid = document.getElementsByClassName("grid")[0];
-    var rowHeight = parseInt(
-      window.getComputedStyle(grid).getPropertyValue("grid-auto-rows")
-    );
-    var rowGap = parseInt(
-      window.getComputedStyle(grid).getPropertyValue("grid-row-gap")
-    );
-    var rowSpan = Math.ceil(
-      (item.querySelector(".content").getBoundingClientRect().height + rowGap) /
+  }
+  /*
+    resizeGridItem = item => {
+      var grid = document.getElementsByClassName("grid")[0];
+      var rowHeight = parseInt(
+        window.getComputedStyle(grid).getPropertyValue("grid-auto-rows")
+      );
+      var rowGap = parseInt(
+        window.getComputedStyle(grid).getPropertyValue("grid-row-gap")
+      );
+      var rowSpan = Math.ceil(
+        (item.querySelector(".content").getBoundingClientRect().height + rowGap) /
         (rowHeight + rowGap)
-    );
-    item.style.gridRowEnd = "span " + rowSpan;
-  };
+      );
+      item.style.gridRowEnd = "span " + rowSpan;
+    };
+   
+    resizeAllGridItems = () => {
+      var allItems = document.getElementsByClassName("item");
+      for (var x = 0; x < allItems.length; x++) {
+        this.resizeGridItem(allItems[x]);
+      }
+    };
+  */
 
-  resizeAllGridItems = () => {
-    var allItems = document.getElementsByClassName("item");
-    for (var x = 0; x < allItems.length; x++) {
-      this.resizeGridItem(allItems[x]);
-    }
-  };
-
-  render() {
-    var bgImage = require("../../images/cabinet-contemporary-counter-1080721.jpg");
-    return (
-      <div className="section-header">
-        <div id="hero" className="section-home">
-          <div id="hero-bg">
+  var bgImage = require("../../images/cabinet-contemporary-counter-1080721.jpg");
+  return (
+    <div className="section-header">
+      <div id="hero" className="section-home">
+        <div id="hero-bg">
+          <div
+            className="bg"
+            style={{ backgroundImage: "url(" + bgImage + ")" }}
+            alt="Photo by Mark McCammon from Pexels"
+          />
+        </div>
+        <div id="hero-gradient" />
+        <div id="hero-search">
+          <h2>Discover the best recipes</h2>
+          <div id="search" className="container-fluid container-constrain">
             <div
-              className="bg"
-              style={{ backgroundImage: "url(" + bgImage + ")" }}
-              alt="Photo by Mark McCammon from Pexels"
-            />
-          </div>
-          <div id="hero-gradient" />
-          <div id="hero-search">
-            <h2>Discover the best recipes</h2>
-            <div id="search" className="container-fluid container-constrain">
-              <div
-                onKeyPress={() => {
-                  if (event.keyCode == 13) this.handleSubmit(event);
-                }}
-              >
-                <div className="row row-condensed">
-                  <div className="col-sm-12">
-                    <div className="form-element">
-                      <input
-                        name="query"
-                        id="ingredient"
-                        className="form-control input-lg form-control-icon icon-location"
-                        type="text"
-                        placeholder="What ingredient do you want to use?"
-                        onChange={this.handleChange}
-                        value={this.state.recipe.ingredient}
-                      />
-                    </div>
+              onKeyPress={() => {
+                if (event.keyCode == 13) handleSubmit(event);
+              }}
+            >
+              <div className="row row-condensed">
+                <div className="col-sm-12">
+                  <div className="form-element">
+                    <input
+                      name="query"
+                      id="ingredient"
+                      className="form-control input-lg form-control-icon icon-location"
+                      type="text"
+                      placeholder="What ingredient do you want to use?"
+                      onChange={handleChange}
+                    />
                   </div>
                 </div>
               </div>
@@ -146,8 +157,8 @@ class Search extends React.Component {
           </div>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default Search;
