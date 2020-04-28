@@ -4,30 +4,13 @@ function Search() {
 
   const [recipe, setRecipe] = useState({ ingredient: "" });
 
-  /*
-  useEffect(() => {
-    setRecipe("apple")
-  }, [])
-*/
-  /*
-  state = {
-    recipe: {
-      ingredient: ""
-    }
-  };
-  */
-
   function handleChange(event) {
-    //const recipe = { ...this.state.recipe, ingredient: event.target.value };
-    //recipe.ingredient = event.target.value
     recipe.ingredient = { ...recipe.ingredient, ingredient: event.target.value };
     setRecipe({ recipe });
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    //this.props.actions.createCourse(this.state.course);
-    //console.log(this.state.recipe.ingredient);
     load();
   }
 
@@ -88,6 +71,10 @@ function Search() {
       })
       .then(function () {
         document.getElementById("loading").style.display = "none";
+        var allItems = document.getElementsByClassName("item");
+        for (var x = 0; x < allItems.length; x++) {
+          resizeGridItem(allItems[x]);
+        }
       })
       .catch(function () {
         console.log("fetch failed");
@@ -95,29 +82,21 @@ function Search() {
 
     return false;
   }
-  /*
-    resizeGridItem = item => {
-      var grid = document.getElementsByClassName("grid")[0];
-      var rowHeight = parseInt(
-        window.getComputedStyle(grid).getPropertyValue("grid-auto-rows")
-      );
-      var rowGap = parseInt(
-        window.getComputedStyle(grid).getPropertyValue("grid-row-gap")
-      );
-      var rowSpan = Math.ceil(
-        (item.querySelector(".content").getBoundingClientRect().height + rowGap) /
-        (rowHeight + rowGap)
-      );
-      item.style.gridRowEnd = "span " + rowSpan;
-    };
-   
-    resizeAllGridItems = () => {
-      var allItems = document.getElementsByClassName("item");
-      for (var x = 0; x < allItems.length; x++) {
-        this.resizeGridItem(allItems[x]);
-      }
-    };
-  */
+
+  function resizeGridItem(item) {
+    var grid = document.getElementsByClassName("grid")[0];
+    var rowHeight = parseInt(
+      window.getComputedStyle(grid).getPropertyValue("grid-auto-rows")
+    );
+    var rowGap = parseInt(
+      window.getComputedStyle(grid).getPropertyValue("grid-row-gap")
+    );
+    var rowSpan = Math.ceil(
+      (item.querySelector(".content").getBoundingClientRect().height + rowGap) /
+      (rowHeight + rowGap)
+    );
+    item.style.gridRowEnd = "span " + rowSpan;
+  }
 
   var bgImage = require("../../images/cabinet-contemporary-counter-1080721.jpg");
   return (
