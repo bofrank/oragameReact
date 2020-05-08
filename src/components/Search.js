@@ -29,6 +29,12 @@ function Search() {
       .then(edamamJSON => {
         let recipeHTML;
         let ingredientsHTML = "";
+        let promoHTML;
+
+        promoHTML =
+          '<a itemscope itemtype="http://schema.org/Recipe" id="promo" class="item photo" href="https://www.kqzyfj.com/click-7903156-14041151" target="_blank"><div class="content"><img itemprop="image" id="imagePromo" class="grid-item-image" src="https://www.lduhtrp.net/image-7903156-14041151" onload="resizeAllGridItems()" /><div itemprop="name" id="titlePromo" class="grid-item-title">Up to 25% off</div><div class="grid-text"><div itemprop="recipeIngredient">Serious deals on kitchen, baking, cooking, appliances, kitchenaid, countertop appliances, stand mixers, blenders, coffee makers, food processors attachments, accessories, toasters, slow cookers here!</div></div></div></a>'
+
+        document.getElementById("grid").innerHTML += promoHTML;
 
         if (edamamJSON.hits.length > 0) {
           for (var k = 0; k < edamamJSON.hits.length; k++) {
