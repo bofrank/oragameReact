@@ -32,7 +32,8 @@
     "redux": "4.0.1",
     "redux-thunk": "2.3.0",
     "reselect": "4.0.0",
-    "url-loader": "^2.3.0"
+    "url-loader": "^2.3.0",
+    "ws": "^7.4.6"
   },
   "devDependencies": {
     "@babel/core": "7.3.4",
